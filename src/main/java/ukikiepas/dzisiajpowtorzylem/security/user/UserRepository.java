@@ -1,7 +1,7 @@
 package ukikiepas.dzisiajpowtorzylem.security.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ukikiepas.dzisiajpowtorzylem.models.user.User;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.User;
 
 import java.util.Optional;
 

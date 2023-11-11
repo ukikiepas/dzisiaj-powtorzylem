@@ -25,3 +25,13 @@ CREATE TABLE token (
                        user_id BIGINT,
                        FOREIGN KEY (user_id) REFERENCES "users"(user_id) ON DELETE CASCADE
 );
+
+CREATE TABLE irregular_verbs (
+    verb_id BIGSERIAL PRIMARY KEY,
+    base_form VARCHAR(50) UNIQUE NOT NULL,
+    past_simple VARCHAR(50) NOT NULL,
+    past_participle VARCHAR(50) NOT NULL,
+    translation VARCHAR(50) NOT NULL,
+    example_sentence VARCHAR(255) NOT NULL,
+    level VARCHAR(2) CHECK (level IN ('A1', 'A2', 'B1', 'B2', 'C1', 'C2'))
+)

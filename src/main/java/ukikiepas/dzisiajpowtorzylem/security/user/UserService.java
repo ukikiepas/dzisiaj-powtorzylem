@@ -1,10 +1,16 @@
 package ukikiepas.dzisiajpowtorzylem.security.user;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ukikiepas.dzisiajpowtorzylem.models.user.User;
+import ukikiepas.dzisiajpowtorzylem.exception.TokenNotFoundException;
+import ukikiepas.dzisiajpowtorzylem.security.user.mappers.UserMapper;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.ChangePasswordRequest;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.User;
+import ukikiepas.dzisiajpowtorzylem.security.auth.JwtService;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.UserDto;
 
 import java.security.Principal;
 
@@ -13,7 +19,10 @@ import java.security.Principal;
 public class UserService {
 
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository repository;
+    private final UserRepository userRepository;
+    private final JwtService jwtService;
+    private final UserMapper userMapper;
+
 
     public void changePassword(ChangePasswordRequest request, Principal connectedUser) {
 
@@ -32,6 +41,20 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
 
         // save the new password
-        repository.save(user);
+        userRepository.save(user);
+    }
+
+    public UserDto getUserData(HttpServletRequest request){
+        String username = getUsernameFromToken(request);
+        return userMapper.userToDto(userRepository.findByUsername(username).orElseThrow());
+    }
+
+    public String getUsernameFromToken(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        if (token != null && token.startsWith("Bearer ")) {
+            token = token.substring(7);
+            return jwtService.extractUsername(token);
+        }
+        throw new TokenNotFoundException("Token not provided or invalid");
     }
 }

@@ -1,4 +1,4 @@
-package ukikiepas.dzisiajpowtorzylem.security.user;
+package ukikiepas.dzisiajpowtorzylem.security.user.models;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +32,7 @@ public enum Role {
                     Permission.MANAGER_DELETE,
                     Permission.MANAGER_CREATE
             )
-    )
-
-    ;
+    );
 
     @Getter
     private final Set<Permission> permissions;

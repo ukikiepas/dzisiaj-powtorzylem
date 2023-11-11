@@ -1,4 +1,4 @@
-package ukikiepas.dzisiajpowtorzylem.models.user;
+package ukikiepas.dzisiajpowtorzylem.security.user.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ukikiepas.dzisiajpowtorzylem.security.user.Role;
 
 import java.time.LocalDate;
 import java.util.Collection;

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import ukikiepas.dzisiajpowtorzylem.security.token.Token;
 import ukikiepas.dzisiajpowtorzylem.security.token.TokenRepository;
 import ukikiepas.dzisiajpowtorzylem.security.token.TokenType;
-import ukikiepas.dzisiajpowtorzylem.models.user.User;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.User;
 import ukikiepas.dzisiajpowtorzylem.security.user.UserRepository;
 import java.io.IOException;
 import java.time.LocalDate;

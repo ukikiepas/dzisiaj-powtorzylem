@@ -4,8 +4,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ukikiepas.dzisiajpowtorzylem.exception.TokenNotFoundException;
-import ukikiepas.dzisiajpowtorzylem.security.auth.JwtService;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.ChangePasswordRequest;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.UserDto;
+
 import java.security.Principal;
 
 @RestController
@@ -13,22 +14,17 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService service;
-    private final JwtService jwtService;
+    private final UserService userService;
 
-    @PatchMapping
-    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordRequest request, Principal connectedUser) {
-        service.changePassword(request, connectedUser);
+    @PatchMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest, Principal connectedUser) {
+        userService.changePassword(changePasswordRequest, connectedUser);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/getUsername")
-    public String getUsernameFromToken(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
-        if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7); // Usuń "Bearer " z początku tokenu
-            return jwtService.extractUsername(token);
-        }
-        throw new TokenNotFoundException("Token not provided or invalid");
+    @GetMapping("/get/user")
+    public UserDto getUserData(HttpServletRequest request){
+        return userService.getUserData(request);
     }
+
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ukikiepas.dzisiajpowtorzylem.security.user.Role;
+import ukikiepas.dzisiajpowtorzylem.security.user.models.Role;
 
 @Data
 @Builder
