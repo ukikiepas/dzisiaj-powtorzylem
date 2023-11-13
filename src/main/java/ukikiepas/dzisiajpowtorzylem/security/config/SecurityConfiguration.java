@@ -13,14 +13,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-import ukikiepas.dzisiajpowtorzylem.security.user.models.Permission;
+import ukikiepas.dzisiajpowtorzylem.user.models.Permission;
 
 
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-import static ukikiepas.dzisiajpowtorzylem.security.user.models.Role.ADMIN;
-import static ukikiepas.dzisiajpowtorzylem.security.user.models.Role.MANAGER;
+import static ukikiepas.dzisiajpowtorzylem.user.models.Role.ADMIN;
+import static ukikiepas.dzisiajpowtorzylem.user.models.Role.MANAGER;
 
 @Configuration
 @EnableWebSecurity

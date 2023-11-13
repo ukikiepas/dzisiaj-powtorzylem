@@ -1,4 +1,4 @@
-package ukikiepas.dzisiajpowtorzylem.security.user.models;
+package ukikiepas.dzisiajpowtorzylem.user.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -48,6 +48,7 @@ public class User implements UserDetails {
     private Role role;
     @NotNull
     private Boolean isPublicAccount;
+    private String image;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

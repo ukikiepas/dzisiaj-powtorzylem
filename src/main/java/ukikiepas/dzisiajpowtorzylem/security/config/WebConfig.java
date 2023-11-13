@@ -17,7 +17,7 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:4200") // Adresy, z których przyjmowane są żądania
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Dozwolone metody HTTP
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH") // Dozwolone metody HTTP
                         .allowedHeaders("Authorization", "Content-Type", "Accept") // Dozwolone nagłówki
                         .exposedHeaders("Authorization", "Refresh-Token") // Nagłówki, które mogą być odczytane przez przeglądarkę po odpowiedzi serwera
                         .maxAge(MAX_AGE_SECS); // Maksymalny czas życia preflight request (w sekundach)

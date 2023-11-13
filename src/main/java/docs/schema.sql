@@ -11,9 +11,9 @@ CREATE TABLE Users
     enabled     BOOLEAN DEFAULT FALSE,
     non_locked  BOOLEAN DEFAULT TRUE,
     creation_date DATE DEFAULT CURRENT_DATE,
-    role        VARCHAR(255) NOT NULL
-    --IMAGE ? - Jeśli chcesz przechowywać obraz jako bajty, możesz użyć typu BYTEA. Jeśli chcesz przechowywać ścieżkę do obrazu, użyj VARCHAR.
-    --image       BYTEA DEFAULT NULL,
+    role        VARCHAR(255) NOT NULL,
+    is_public_account BOOLEAN DEFAULT FALSE,
+    image       BYTEA DEFAULT NULL
 );
 
 CREATE TABLE token (

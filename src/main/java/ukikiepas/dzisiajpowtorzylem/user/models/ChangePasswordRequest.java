@@ -1,4 +1,4 @@
-package ukikiepas.dzisiajpowtorzylem.security.user.models;
+package ukikiepas.dzisiajpowtorzylem.user.models;
 
 import lombok.Builder;
 import lombok.Getter;

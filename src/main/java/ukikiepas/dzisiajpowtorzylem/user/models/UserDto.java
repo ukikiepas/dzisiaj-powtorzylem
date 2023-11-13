@@ -1,4 +1,4 @@
-package ukikiepas.dzisiajpowtorzylem.security.user.models;
+package ukikiepas.dzisiajpowtorzylem.user.models;
 
 
 import lombok.Data;
@@ -17,5 +17,6 @@ public class UserDto {
     private LocalDate creationDate;
     private Role role;
     private Boolean isPublicAccount;
+    private String image;
 
 }

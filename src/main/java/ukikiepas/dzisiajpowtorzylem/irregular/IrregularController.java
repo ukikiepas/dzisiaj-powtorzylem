@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ukikiepas.dzisiajpowtorzylem.irregular.models.IrregularVerbDto;
 import ukikiepas.dzisiajpowtorzylem.irregular.models.IrregularVerbResponseDto;
-import ukikiepas.dzisiajpowtorzylem.security.user.UserService;
+import ukikiepas.dzisiajpowtorzylem.user.UserService;
 
 import java.util.List;
 

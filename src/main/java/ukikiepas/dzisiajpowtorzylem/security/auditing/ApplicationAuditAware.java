@@ -4,7 +4,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import ukikiepas.dzisiajpowtorzylem.security.user.models.User;
+import ukikiepas.dzisiajpowtorzylem.user.models.User;
 
 import java.util.Optional;
 
