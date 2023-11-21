@@ -16,7 +16,6 @@ import java.util.List;
 public class IrregularController {
 
     private final IrregularService irregularService;
-    private final UserService userService;
 
     @GetMapping("/getRandomSet")
     public List<IrregularVerbDto> getRandomVerbs(@RequestParam("count") int count, @RequestParam("level") String level){

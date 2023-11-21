@@ -17,13 +17,13 @@ CREATE TABLE Users
 );
 
 CREATE TABLE token (
-                       token_id BIGSERIAL PRIMARY KEY,
-                       token VARCHAR(255) UNIQUE NOT NULL,
-                       token_type VARCHAR(255) DEFAULT 'BEARER' NOT NULL,
-                       revoked BOOLEAN NOT NULL,
-                       expired BOOLEAN NOT NULL,
-                       user_id BIGINT,
-                       FOREIGN KEY (user_id) REFERENCES "users"(user_id) ON DELETE CASCADE
+    token_id BIGSERIAL PRIMARY KEY,
+    token VARCHAR(255) UNIQUE NOT NULL,
+    token_type VARCHAR(255) DEFAULT 'BEARER' NOT NULL,
+    revoked BOOLEAN NOT NULL,
+    expired BOOLEAN NOT NULL,
+    user_id BIGINT,
+    FOREIGN KEY (user_id) REFERENCES "users"(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE irregular_verbs (
@@ -34,4 +34,47 @@ CREATE TABLE irregular_verbs (
     translation VARCHAR(50) NOT NULL,
     example_sentence VARCHAR(255) NOT NULL,
     level VARCHAR(2) CHECK (level IN ('A1', 'A2', 'B1', 'B2', 'C1', 'C2'))
-)
+);
+
+
+CREATE TABLE Readings (
+    reading_id BIGSERIAL PRIMARY KEY,
+    title VARCHAR(100),
+    short_description VARCHAR(255),
+    content TEXT,
+    level VARCHAR(2)
+);
+
+CREATE TABLE Readings_Words (
+    word_id BIGSERIAL PRIMARY KEY,
+    reading_id BIGINT,
+    word VARCHAR(255),
+    translation VARCHAR(255),
+    definition TEXT,
+    FOREIGN KEY (reading_id) REFERENCES Readings(reading_id)
+);
+
+CREATE TABLE Audio_Files (
+    audio_id BIGSERIAL PRIMARY KEY,
+    reading_id BIGINT,
+    file_path VARCHAR(255),
+    duration TIME,
+    format VARCHAR(50),
+    FOREIGN KEY (reading_id) REFERENCES Readings(reading_id)
+);
+
+CREATE TABLE Readings_Questions (
+    question_id BIGSERIAL PRIMARY KEY,
+    reading_id BIGINT,
+    question_text TEXT,
+    answer_marker VARCHAR(255),
+    FOREIGN KEY (reading_id) REFERENCES Readings(reading_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Readings_Answers (
+    answer_id BIGSERIAL PRIMARY KEY,
+    question_id BIGINT,
+    answer_text TEXT,
+    is_correct BOOLEAN,
+    FOREIGN KEY (question_id) REFERENCES Readings_Questions(question_id) ON DELETE CASCADE
+);
