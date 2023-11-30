@@ -1,0 +1,8 @@
+comment_id,body,username,user_id,parent_id,created_at
+1,"First comment","Jack",1,,2021-08-16 23:00:33
+2,"Second comment","John",2,,2021-08-16 23:00:33
+3,"First comment first child","John",2,1,2021-08-16 23:00:33
+4,"Second comment second child","John",2,2,2021-08-16 23:00:33
+5,"gfggf","John",2,1,2022-02-10 09:15:57
+6,"hghghggh","John",2,1,2022-02-10 09:16:01
+7,"!!","John",2,2,2022-02-10 09:16:35

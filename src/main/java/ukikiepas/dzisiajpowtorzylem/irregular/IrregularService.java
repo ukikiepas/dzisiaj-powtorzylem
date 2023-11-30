@@ -8,7 +8,6 @@ import ukikiepas.dzisiajpowtorzylem.irregular.models.EnglishLevel;
 import ukikiepas.dzisiajpowtorzylem.irregular.models.IrregularVerb;
 import ukikiepas.dzisiajpowtorzylem.irregular.models.IrregularVerbDto;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

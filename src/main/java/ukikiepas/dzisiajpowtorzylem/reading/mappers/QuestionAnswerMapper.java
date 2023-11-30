@@ -2,7 +2,6 @@ package ukikiepas.dzisiajpowtorzylem.reading.mappers;
 
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import ukikiepas.dzisiajpowtorzylem.reading.models.QuestionWithAnswersDto;
 import ukikiepas.dzisiajpowtorzylem.reading.models.ReadingAnswer;
 import ukikiepas.dzisiajpowtorzylem.reading.models.ReadingQuestion;

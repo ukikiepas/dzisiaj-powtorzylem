@@ -104,7 +104,7 @@ public class AuthenticationService {
             return;
         }
         refreshToken = authHeader.substring(7);
-        userName = jwtService.extractUsername(refreshToken);
+        userName = jwtService.  extractUsername(refreshToken);
         if (userName != null) {
             var user = this.repository.findByUsername(userName)
                     .orElseThrow();
