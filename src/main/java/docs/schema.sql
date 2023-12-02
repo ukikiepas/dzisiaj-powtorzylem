@@ -78,3 +78,22 @@ CREATE TABLE Readings_Answers (
     is_correct BOOLEAN,
     FOREIGN KEY (question_id) REFERENCES Readings_Questions(question_id) ON DELETE CASCADE
 );
+
+CREATE TABLE Comments (
+    comment_id BIGSERIAL PRIMARY KEY,
+    body TEXT,
+    username TEXT,
+    parent_id BIGINT,
+    created_at TIMESTAMP,
+    section TEXT,
+    section_particular_id BIGINT
+);
+
+CREATE TABLE Vocabulary (
+    word_id BIGSERIAL PRIMARY KEY,
+    word TEXT,
+    translation TEXT,
+    definition TEXT,
+    level VARCHAR(2) CHECK (level IN ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')),
+    image_location TEXT
+);

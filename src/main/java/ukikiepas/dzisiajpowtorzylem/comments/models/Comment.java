@@ -22,7 +22,8 @@ public class Comment {
     private Long commentId;
     private String body;
     private String username;
-    private Long userId;
     private Long parentId;
     private LocalDateTime createdAt;
+    private String section;
+    private Long sectionParticularId;
 }

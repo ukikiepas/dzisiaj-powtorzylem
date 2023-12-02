@@ -26,7 +26,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "users_user_id_seq", allocationSize = 1)
     private Long userId;
-    @NotNull
+    @NotNull //TODO ogarnac notblank
     @Column(name = "first_name")
     private String firstname;
     @NotNull

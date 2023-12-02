@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ukikiepas.dzisiajpowtorzylem.comments.models.Comment;
+import ukikiepas.dzisiajpowtorzylem.comments.models.CommentDTO;
 
 import java.util.List;
 
@@ -14,19 +15,28 @@ public class CommentController {
 
     private final CommentService service;
 
-    @GetMapping
-    public ResponseEntity<List<Comment>> getAllComments() {
-         return ResponseEntity.ok(service.getAllComments());
+    @GetMapping("/{section}/{sectionParticularId}")
+    public ResponseEntity<List<CommentDTO>> getAllComments
+            (@PathVariable String section,
+             @PathVariable Long sectionParticularId)
+    {
+         return ResponseEntity.ok(service.getAllCommentsWithImages(section, sectionParticularId));
     }
 
     @PostMapping
-    public void addNewComment(@RequestBody Comment receivedComment, HttpServletRequest request) {
-        service.addNewComment(receivedComment, request);
+    public Comment addNewComment(@RequestBody Comment receivedComment, HttpServletRequest request) {
+       return service.addNewComment(receivedComment, request);
     }
 
-    @PatchMapping
-    public void editComment(){
+    @PatchMapping("/{commentId}")
+    public void editComment(@PathVariable Long commentId, @RequestBody String body){
+        service.editComment(commentId, body);
+    }
 
+
+    @DeleteMapping("/{commentId}")
+    public void deleteComment(@PathVariable Long commentId){
+        service.deleteComment(commentId);
     }
 
 }
