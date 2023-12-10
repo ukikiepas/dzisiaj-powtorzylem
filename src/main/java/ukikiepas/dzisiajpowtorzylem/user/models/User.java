@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ukikiepas.dzisiajpowtorzylem.vocabulary.models.Vocabulary;
 
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -49,6 +51,13 @@ public class User implements UserDetails {
     @NotNull
     private Boolean isPublicAccount;
     private String image;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_vocabulary",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "word_id")
+    )
+    private Set<Vocabulary> favoriteWords;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

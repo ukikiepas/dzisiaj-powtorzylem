@@ -16,26 +16,23 @@ public class CommentController {
     private final CommentService service;
 
     @GetMapping("/{section}/{sectionParticularId}")
-    public ResponseEntity<List<CommentDTO>> getAllComments
-            (@PathVariable String section,
-             @PathVariable Long sectionParticularId)
-    {
+    public ResponseEntity<List<CommentDTO>> getAllComments(@PathVariable String section, @PathVariable Long sectionParticularId) {
          return ResponseEntity.ok(service.getAllCommentsWithImages(section, sectionParticularId));
     }
 
     @PostMapping
-    public Comment addNewComment(@RequestBody Comment receivedComment, HttpServletRequest request) {
-       return service.addNewComment(receivedComment, request);
+    public Comment addNewComment(@RequestBody Comment newComment, HttpServletRequest request) {
+       return service.addNewComment(newComment, request);
     }
 
     @PatchMapping("/{commentId}")
-    public void editComment(@PathVariable Long commentId, @RequestBody String body){
+    public void editComment(@PathVariable Long commentId, @RequestBody String body) {
         service.editComment(commentId, body);
     }
 
 
     @DeleteMapping("/{commentId}")
-    public void deleteComment(@PathVariable Long commentId){
+    public void deleteComment(@PathVariable Long commentId) {
         service.deleteComment(commentId);
     }
 

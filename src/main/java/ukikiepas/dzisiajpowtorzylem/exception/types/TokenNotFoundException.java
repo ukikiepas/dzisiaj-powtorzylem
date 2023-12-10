@@ -1,8 +1,7 @@
-package ukikiepas.dzisiajpowtorzylem.exception;
+package ukikiepas.dzisiajpowtorzylem.exception.types;
 
 public class TokenNotFoundException extends RuntimeException {
     public TokenNotFoundException(String message) {
         super(message);
     }
-    // Możesz dodać dodatkowe pola/metody, jeśli to potrzebne
 }

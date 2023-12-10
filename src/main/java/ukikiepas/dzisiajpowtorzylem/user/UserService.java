@@ -4,15 +4,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ukikiepas.dzisiajpowtorzylem.comments.models.Comment;
-import ukikiepas.dzisiajpowtorzylem.exception.TokenNotFoundException;
+import ukikiepas.dzisiajpowtorzylem.exception.types.TokenNotFoundException;
 import ukikiepas.dzisiajpowtorzylem.user.mappers.UserMapper;
 import ukikiepas.dzisiajpowtorzylem.user.models.ChangePasswordRequest;
 import ukikiepas.dzisiajpowtorzylem.user.models.User;
 import ukikiepas.dzisiajpowtorzylem.security.auth.JwtService;
 import ukikiepas.dzisiajpowtorzylem.user.models.UserDto;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -72,5 +70,7 @@ public class UserService {
         }
         throw new TokenNotFoundException("Token not provided or invalid");
     }
+
+
 
 }

@@ -46,7 +46,6 @@ public class SecurityConfiguration {
     private final LogoutHandler logoutHandler;
 
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http

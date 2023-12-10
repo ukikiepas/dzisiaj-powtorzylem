@@ -23,20 +23,22 @@ public class CommentService {
         return repository.findAllCommentsWithUserImages(section, sectionParticularId);
     }
 
-    public Comment addNewComment(Comment receivedComment, HttpServletRequest request){
-        receivedComment.setCreatedAt(LocalDateTime.now());
-        receivedComment.setUsername(userService.getUsernameFromToken(request));
-        repository.save(receivedComment);
-        return receivedComment;
+    @Transactional
+    public Comment addNewComment(Comment newComment, HttpServletRequest request){
+        newComment.setCreatedAt(LocalDateTime.now());
+        newComment.setUsername(userService.getUsernameFromToken(request));
+        repository.save(newComment);
+        return newComment;
     }
 
     @Transactional
     public void editComment(Long commentId, String body) {
         Comment comment = repository.findById(commentId)
-                .orElseThrow(() -> new EntityNotFoundException("Comment not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Comment not found - ID: " + commentId));
         comment.setBody(body);
     }
 
+    @Transactional
     public void deleteComment(Long commentId){
         repository.deleteById(commentId);
     }
