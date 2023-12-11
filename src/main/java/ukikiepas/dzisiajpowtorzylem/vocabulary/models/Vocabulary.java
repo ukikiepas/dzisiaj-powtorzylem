@@ -6,7 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ukikiepas.dzisiajpowtorzylem.user.models.User;
+import ukikiepas.dzisiajpowtorzylem.vocabularyset.models.VocabularySet;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -30,5 +32,8 @@ public class Vocabulary {
     private String imageLocation;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<User> users;
+    @ManyToMany(mappedBy = "vocabularies", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<VocabularySet> vocabularySets = new HashSet<>();
+    private Boolean isApproved;
 
 }
