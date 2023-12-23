@@ -26,12 +26,12 @@ public class VocabularySet {
     private Long setId;
     private String title;
     private String description;
-    private String difficulty;
-    private String category;
     private String creator;
+    private String category;
     private Boolean isPublic;
     private Boolean isActive;
     private LocalDate lastReviewed;
+    private Boolean isCreatedByAdmin;
     private LocalDate creationDate;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(

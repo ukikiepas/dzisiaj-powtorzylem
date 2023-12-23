@@ -9,6 +9,7 @@ import ukikiepas.dzisiajpowtorzylem.user.models.User;
 import ukikiepas.dzisiajpowtorzylem.vocabularyset.models.VocabularySet;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -36,4 +37,8 @@ public class Vocabulary {
     private Set<VocabularySet> vocabularySets = new HashSet<>();
     private Boolean isApproved;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(wordId);
+    }
 }

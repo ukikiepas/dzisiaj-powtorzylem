@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+src/main/java/docs/TODOLIST.txt
 
 ### IntelliJ IDEA ###
 .idea

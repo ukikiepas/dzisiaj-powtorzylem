@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ukikiepas.dzisiajpowtorzylem.exception.types.TokenNotFoundException;
 import ukikiepas.dzisiajpowtorzylem.user.mappers.UserMapper;
 import ukikiepas.dzisiajpowtorzylem.user.models.ChangePasswordRequest;
+import ukikiepas.dzisiajpowtorzylem.user.models.Role;
 import ukikiepas.dzisiajpowtorzylem.user.models.User;
 import ukikiepas.dzisiajpowtorzylem.security.auth.JwtService;
 import ukikiepas.dzisiajpowtorzylem.user.models.UserDto;
@@ -54,6 +55,13 @@ public class UserService {
         String username = getUsernameFromToken(request);
         Optional<User> user = userRepository.findByUsername(username);
         return userMapper.userToDto(user.get());
+    }
+
+    public Role getRoleFromToken(HttpServletRequest request) {
+        String username = getUsernameFromToken(request);
+        return userRepository.findByUsername(username)
+                .map(User::getRole)
+                .orElse(null);
     }
 
     public boolean setNewUserImage(HttpServletRequest request, String base64Image){
