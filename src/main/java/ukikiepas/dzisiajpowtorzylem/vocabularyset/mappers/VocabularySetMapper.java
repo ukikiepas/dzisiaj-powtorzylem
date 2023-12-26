@@ -1,6 +1,5 @@
 package ukikiepas.dzisiajpowtorzylem.vocabularyset.mappers;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ukikiepas.dzisiajpowtorzylem.vocabulary.VocabularyRepository;
@@ -8,8 +7,13 @@ import ukikiepas.dzisiajpowtorzylem.vocabulary.models.Vocabulary;
 import ukikiepas.dzisiajpowtorzylem.vocabulary.models.VocabularyDto;
 import ukikiepas.dzisiajpowtorzylem.vocabularyset.models.VocabularySet;
 import ukikiepas.dzisiajpowtorzylem.vocabularyset.models.VocabularySetDto;
+import ukikiepas.dzisiajpowtorzylem.vocabularyset.models.VocabularySetViewDto;
+
+import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,17 +23,9 @@ public class VocabularySetMapper {
     private final VocabularyRepository vocabularyRepository;
 
     public Set<Vocabulary> convertDtoToVocabulary(Set<VocabularyDto> vocabularyDtos) {
-        Set<Vocabulary> vocabularies = new HashSet<>();
-        for (VocabularyDto dto : vocabularyDtos) {
-            Vocabulary vocabulary = Vocabulary.builder()
-                    .word(dto.getWord())
-                    .translation(dto.getTranslation())
-                    .definition(dto.getDefinition())
-                    .imageLocation(dto.getImageLocation())
-                    .build();
-            vocabularies.add(vocabulary);
-        }
-        return vocabularies;
+        return vocabularyDtos.stream()
+                .map(this::createOrUpdateVocabulary)
+                .collect(Collectors.toSet());
     }
 
     public VocabularySetDto convertToDto(VocabularySet set, Set<Vocabulary> vocabularies) {
@@ -52,7 +48,44 @@ public class VocabularySetMapper {
                 .build();
     }
 
-    public VocabularyDto convertVocabularyToDto(Vocabulary vocabulary) {
+
+    public Vocabulary createVocabularyFromDto(VocabularyDto vocabDto) {
+        Vocabulary vocabulary = new Vocabulary();
+        vocabulary.setWord(vocabDto.getWord());
+        vocabulary.setTranslation(vocabDto.getTranslation());
+        vocabulary.setDefinition(vocabDto.getDefinition());
+        vocabulary.setImageLocation(vocabDto.getImageLocation());
+        return vocabulary;
+    }
+
+    public VocabularySetViewDto convertToViewDto(VocabularySet set) {
+        return VocabularySetViewDto.builder()
+                .id(set.getSetId())
+                .title(set.getTitle())
+                .description(set.getDescription())
+                .creator(set.getCreator())
+                .creationDate(set.getCreationDate())
+                .build();
+    }
+
+    public VocabularySet copySetWithNewCreator(VocabularySet originalSet, Set<Vocabulary> vocabularySet, String newCreator) {
+        Set<Vocabulary> vocabularies = new HashSet<>(originalSet.getVocabularies());
+
+        VocabularySet newSet = new VocabularySet();
+        newSet.setTitle(originalSet.getTitle());
+        newSet.setDescription(originalSet.getDescription());
+        newSet.setCategory(originalSet.getCategory());
+        newSet.setIsPublic(originalSet.getIsPublic());
+        newSet.setIsActive(originalSet.getIsActive());
+        newSet.setIsCreatedByAdmin(false);
+        newSet.setCreationDate(LocalDate.now());
+        newSet.setVocabularies(vocabularies);
+        newSet.setCreator(newCreator);
+
+        return newSet;
+    }
+
+    private VocabularyDto convertVocabularyToDto(Vocabulary vocabulary) {
         return VocabularyDto.builder()
                 .wordId(vocabulary.getWordId())
                 .word(vocabulary.getWord())
@@ -63,19 +96,11 @@ public class VocabularySetMapper {
                 .isFavourited(false)
                 .build();
     }
-    public Vocabulary convertToVocabulary(VocabularyDto vocabDto) {
-        Vocabulary vocabulary;
-        if (vocabDto.getWordId() != null) {
-            vocabulary = vocabularyRepository.findById(vocabDto.getWordId())
-                    .orElse(new Vocabulary());
-        } else {
-            vocabulary = new Vocabulary();
-        }
-        vocabulary.setWord(vocabDto.getWord());
-        vocabulary.setTranslation(vocabDto.getTranslation());
-        // pozostałe pola
-        return vocabulary;
+
+    private Vocabulary createOrUpdateVocabulary(VocabularyDto vocabDto) {
+        return vocabDto.getWordId() != null
+                ? vocabularyRepository.findById(vocabDto.getWordId())
+                .orElseGet(() -> createVocabularyFromDto(vocabDto))
+                : createVocabularyFromDto(vocabDto);
     }
-
-
 }

@@ -1,7 +1,8 @@
 package ukikiepas.dzisiajpowtorzylem.vocabularyset;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import ukikiepas.dzisiajpowtorzylem.vocabulary.models.Vocabulary;
@@ -21,6 +22,11 @@ public interface VocabularySetRepository extends JpaRepository<VocabularySet, Lo
             "JOIN v.vocabularySets vs " +
             "WHERE vs.setId = :setId")
     Set<Vocabulary> findByVocabularySetId(@Param("setId") Long setId);
+
+    @Query("SELECT v FROM VocabularySet v WHERE " +
+            "(:searchTerm IS NULL OR v.title LIKE %:searchTerm%) AND " +
+            "(:category IS NULL OR v.category = :category)")
+    Page<VocabularySet> findWithFilters(String searchTerm, String category, Pageable pageable);
 
 }
 
