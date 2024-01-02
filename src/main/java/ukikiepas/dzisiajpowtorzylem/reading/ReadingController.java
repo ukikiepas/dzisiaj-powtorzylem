@@ -12,8 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/auth/readings")
 @RequiredArgsConstructor
-
-
 public class ReadingController {
 
     private final ReadingService readingService;

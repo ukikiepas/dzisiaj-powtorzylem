@@ -1,4 +1,4 @@
-package ukikiepas.dzisiajpowtorzylem.reading.models;
+package ukikiepas.dzisiajpowtorzylem.reading.audio.models;
 
 
 import jakarta.persistence.*;
@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ukikiepas.dzisiajpowtorzylem.reading.models.Reading;
 
 import java.sql.Time;
 
@@ -21,11 +22,10 @@ public class AudioFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long audioId;
-    @ManyToOne
-    @JoinColumn(name = "reading_id", referencedColumnName = "readingId")
-    private Reading reading;
-    private String filePath;
+    private Long readingId;
+    private String fileName;
     private Time duration;
     private String format;
+    private String filePath;
 
 }

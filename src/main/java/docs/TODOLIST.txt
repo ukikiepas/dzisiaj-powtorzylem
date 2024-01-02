@@ -1,0 +1,43 @@
+1. PRIORYTET TO TE SŁÓWKA DNIA DOKOŃCZYĆ
+2. KOLEJNA MEGA WAŻNA SPRAWA TO ZACZĄĆ ROBIĆ MOŻLIWOŚĆ TWORZENIA TYCH ZESTAWÓW SŁÓWEK
+-> UDOSTĘPNIANIE ICH
+-> NAUKA ICH
+-> PRYWATNY / PUBLICZNY
+-> NA POCZĄTKU PODSTAWOWA FORMA ROZWIĄZYWANIA ICH -> DOG - ______
+-> PÓŹNIEJ JAKIEŚ ALGORYTMY DO SPACE REPETITION
+-> KAŻDE SŁÓWKO IDZIE DO APPROVA DLA ADMINA  (JEŚLI JESZCZE TAKIEGO NIE MA)
+3. JAKIEŚ MIEJSCE GDZIE SĄ WSZYSTKIE SŁÓWKA W TYM POLUBIONE
+4. ANALIZA TYCH DANYCH I POKAZYWANIE TEGO UŻYTKOWNIKOWI
+5. MAILINGI DO RODZICÓW (MOŻE SMSY ZEBY BYŁO HEHE DUŻO)
+6. PANEL ADMINA XDDDD (mam miesiąc na apke i tekst)
+
+
+
+*** OGARNĄĆ SECURITY ŻEBY SIĘ NIE JEBAŁO ***
+*** ŻEBY NA POCZĄTKU BYŁA TA FAJNA STRONA A POTEM DO LOGOWANIA ***
+
+
+GUI ZESTAWÓW:
+
+Chciałbym żeby były 3 opcje:
+-> Stwórz zestaw słówek
+-> Znajdź zestaw słówek
+-> Twoje zestawy słówek
+
+
+Stwórz zestaw:
+na pewno żeby po stworzeniu poprawnym przekierowywało do widoku tego zestawu
+
+Twoje zestawy słówek
+widok ze wszystkimi zestawami
+    -możliwość wyfiltrowania tylko po tych dodanych przed administratora
+    -i po tych które są jeszcze dziś do przećwiczenia (?)
+    -tam jakaś flaga, żeby można było wziąć tylko te "oficjalne". Jednak flaga nie jest potrzebna, creator=ADMIN => oficjalka
+
+
+Zestaw słówek
+widzimy w jakiejś tabeli wszystkie słówka a na samej górze mamy przyciski
+    - przećwicz (z jakąś infomracją czy już dziś cwiczył)
+    - edytuj
+    - inna forma ćwiczenia
+    - jakaś opcja dbania o historię tego
