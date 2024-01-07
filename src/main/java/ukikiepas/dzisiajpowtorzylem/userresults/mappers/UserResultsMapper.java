@@ -16,6 +16,10 @@ public interface UserResultsMapper {
     @Mapping(target = "resultId", ignore = true)
     UserResults mapDtoToUserResults(UserResultDto userResultDto);
 
+
+    @Mapping(target = "answers", source = "userResultsAnswers")
+    UserResultDto mergeToUserResultDto(UserResults userResults, List<UserResultsAnswers> userResultsAnswers);
+
     default List<UserResultsAnswers> mapDtoToUserResultsAnswers(UserResultDto userResultDto, Long resultId) {
         return userResultDto.getAnswers().stream().map(answerDto -> {
             UserResultsAnswers answer = new UserResultsAnswers();
@@ -26,4 +30,18 @@ public interface UserResultsMapper {
             return answer;
         }).toList();
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,12 +1,12 @@
 package ukikiepas.dzisiajpowtorzylem.userresults;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ukikiepas.dzisiajpowtorzylem.userresults.models.UserResultDto;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,8 +16,13 @@ public class UserResultsController {
     private final UserResultsService userResultsService;
 
     @PostMapping
-    public ResponseEntity<?> saveResults(@RequestBody UserResultDto userResultDto){
+    public ResponseEntity<?> saveResults(@RequestBody UserResultDto userResultDto) {
         return userResultsService.saveUserResults(userResultDto);
+    }
+
+    @GetMapping("/{dateString}")
+    public ResponseEntity<?> getResultsDay(@PathVariable String dateString, HttpServletRequest request) {
+        return userResultsService.getResultsDay(dateString, request);
     }
 
 

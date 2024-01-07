@@ -8,6 +8,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface VocabularyMapper {
+
     VocabularyDto vocabularyToVocabularyDto(Vocabulary vocabulary);
     List<VocabularyDto> vocabulariesToVocabularyDtos(List<Vocabulary> vocabularies);
+
 }
