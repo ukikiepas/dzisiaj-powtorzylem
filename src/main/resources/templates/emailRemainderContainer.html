@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+        }
+        .email-header {
+            background-color: #005691;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .email-body {
+            padding: 20px;
+            text-align: center;
+            color: #333333;
+        }
+        .email-footer {
+            background-color: #f2f2f2;
+            color: #333333;
+            text-align: center;
+            font-size: 12px;
+            padding: 10px;
+        }
+        .email-footer a {
+            color: #005691;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="email-header">
+        <h1>Dzisiaj Powtórzylem - Przypomnienie</h1>
+    </div>
+    <div class="email-body">
+        <h2>Witaj w Dzisiaj Powtórzylem!</h2>
+        <p th:text="${message}">Treść wiadomości...</p>
+        <p>Jeśli masz pytania, skontaktuj się z nami.</p>
+        <p>+48 123 456 789 </p>
+        <p>www.facebook.com/dzisiajpowtorzylem</p>
+    </div>
+    <div class="email-footer">
+        <p>Dziękujemy za korzystanie z naszej aplikacji!</p>
+        <p>Odwiedź naszą stronę: <a href="https://dzisiajpowtorzylem.pl">Dzisiaj Powtórzylem</a></p>
+    </div>
+</div>
+</body>
+</html>

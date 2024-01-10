@@ -9,6 +9,7 @@ import ukikiepas.dzisiajpowtorzylem.user.models.UserDto;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
+    @Mapping(target = "isParentNotified", source = "parentNotified")
     UserDto userToDto(User user);
 
     @Mapping(target = "firstname", source = "firstname")
@@ -24,6 +25,8 @@ public interface UserMapper {
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "isPublicAccount", source = "isPublicAccount")
     @Mapping(target = "image", ignore = true)
+    @Mapping(target = "parentEmail", source = "parentEmail")
+    @Mapping(target = "parentNotified", source = "isParentNotified")
     void updateUserFromDto (UserDto userDto, @MappingTarget User user);
 
 }

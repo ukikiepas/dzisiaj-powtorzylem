@@ -18,6 +18,7 @@ public class RegisterRequest {
     private String email;
     private String password;
     private String city;
+    private String parentEmail;
     private String bio;
     private Role role;
     private boolean isPublicAccount;

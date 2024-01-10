@@ -40,6 +40,8 @@ public class AuthenticationService {
                 .nonLocked(true)
                 .creationDate(LocalDate.now())
                 .role(request.getRole())
+                .parentEmail(request.getParentEmail())
+                .isParentNotified(true)
                 .isPublicAccount(request.isPublicAccount())
                 .build();
         var savedUser = repository.save(user);

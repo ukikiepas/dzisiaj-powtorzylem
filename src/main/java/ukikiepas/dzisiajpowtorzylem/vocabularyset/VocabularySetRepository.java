@@ -33,6 +33,8 @@ public interface VocabularySetRepository extends JpaRepository<VocabularySet, Lo
     @Modifying
     @Query("update VocabularySet u set u.lastReviewed = :lastReviewed where u.setId = :setId")
     void updateLastReviewed(@Param(value = "setId") long id, @Param(value = "lastReviewed") LocalDate lastReviewed);
+
+    List<VocabularySet> findAllByCreator(String creator);
 }
 
 

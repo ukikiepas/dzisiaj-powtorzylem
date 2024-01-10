@@ -47,7 +47,6 @@ public class UserService {
     public void changeUserDetails(HttpServletRequest request, UserDto userDto){
         Optional<User> user = userRepository.findByUsername(getUsernameFromToken(request));
         userMapper.updateUserFromDto(userDto, user.get());
-        System.out.println(user);
         userRepository.save(user.get());
     }
 

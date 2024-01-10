@@ -1,3 +1,15 @@
+TODO biorać pod uwagę czas :)
+1. Analiza tego progresu
+2. Mailing do rodziców + wybieranie w zakładce konta czy ma być czy nie - wysyłanie maila o rezygnacji z suba
+3. Zakładka z ulubionym słówkami
+
+
+
+
+
+
+
+
 1. PRIORYTET TO TE SŁÓWKA DNIA DOKOŃCZYĆ
 2. KOLEJNA MEGA WAŻNA SPRAWA TO ZACZĄĆ ROBIĆ MOŻLIWOŚĆ TWORZENIA TYCH ZESTAWÓW SŁÓWEK
 -> UDOSTĘPNIANIE ICH

@@ -45,6 +45,9 @@ public class User implements UserDetails {
     private boolean enabled;
     private boolean nonLocked;
     private LocalDate creationDate;
+    private String parentEmail;
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean isParentNotified;
     @Enumerated(EnumType.STRING)
     @NotNull
     private Role role;
@@ -92,5 +95,26 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", bio='" + bio + '\'' +
+                ", enabled=" + enabled +
+                ", nonLocked=" + nonLocked +
+                ", creationDate=" + creationDate +
+                ", parentEmail='" + parentEmail + '\'' +
+                ", isParentNotified='" + isParentNotified + '\'' +
+                ", role=" + role +
+                ", isPublicAccount=" + isPublicAccount +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

@@ -41,4 +41,20 @@ public class VocabularySet {
     )
     private Set<Vocabulary> vocabularies = new HashSet<>();
 
+
+    @Override
+    public String toString() {
+        return "VocabularySet{" +
+                "setId=" + setId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", creator='" + creator + '\'' +
+                ", category='" + category + '\'' +
+                ", isPublic=" + isPublic +
+                ", isActive=" + isActive +
+                ", lastReviewed=" + lastReviewed +
+                ", isCreatedByAdmin=" + isCreatedByAdmin +
+                ", creationDate=" + creationDate +
+                '}';
+    }
 }

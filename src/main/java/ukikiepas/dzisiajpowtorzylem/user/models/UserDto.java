@@ -18,5 +18,7 @@ public class UserDto {
     private Role role;
     private Boolean isPublicAccount;
     private String image;
+    private String parentEmail;
+    private Boolean isParentNotified;
 
 }
