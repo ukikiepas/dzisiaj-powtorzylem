@@ -25,5 +25,4 @@ public class UserResultsController {
         return userResultsService.getResultsDay(dateString, request);
     }
 
-
 }

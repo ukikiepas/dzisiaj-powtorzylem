@@ -35,13 +35,11 @@ public class EmailService {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-        helper.setFrom("noreply@example.com");
+        helper.setFrom("dzisiajpowtorzylem@gmail.com");
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
 
         mailSender.send(mimeMessage);
     }
-
-
 }

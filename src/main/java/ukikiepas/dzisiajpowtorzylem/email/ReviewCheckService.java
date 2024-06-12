@@ -30,10 +30,24 @@ public class ReviewCheckService {
         for (User user : users) {
             List<VocabularySet> sets = vocabularySetRepository.findAllByCreator(user.getUsername());
 
+            //TODO wynieść tekst do osobnego pliku
             for (VocabularySet set : sets) {
                 if ((set.getLastReviewed() == null || set.getLastReviewed().isBefore(today)) && set.getIsActive()) {
-                    emailService.sendSetReminderEmail(user.getParentEmail(), "Przypomnienie o powtórce", "TYTUŁ !!!",
-                            "Twoje dziecko nie wykonało jeszcze dzisiejszej powtórki zestawu słówek: " + set.getTitle());
+                    emailService.sendSetReminderEmail(
+                            user.getParentEmail(),
+                            "Przypomnienie o powtórce",
+                            "Mamy ważne informację",
+                            "Twoje dziecko nie wykonało jeszcze dzisiejszej powtórki zestawu słówek: "
+                                    + set.getTitle()
+                                    + ". Regularna nauka to klucz do sukcesu!");
+                    emailService.sendSetReminderEmail(user.getEmail(),
+                            "Przypomnienie o powtórce",
+                            "Mamy ważne informację",
+                            "Hej, nie potwórzyłeś jeszcze dziś zestawu "
+                                    + set.getTitle() +
+                                    " a mamy już 20! Pamiętaj, że regularna nauka to podstawa." +
+                                    "\nUwierz nam - warto." +
+                                    "\nTrzymamy kciuki!");
                 }
             }
         }
